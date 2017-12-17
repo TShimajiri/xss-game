@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>XSS-GAME</title>
+
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/game.js"></script>
+
+		<style type="text/css">
+			body { background-color: rgb(245, 245, 245); }
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container">
+					<div class="navbar-header">
+						<a href="#" class="navbar-brand">XSS-GAME </a>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">問題選択<span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#1" onclick="selectLevel(1)">問題1</a></li>
+									<li><a href="#2" onclick="selectLevel(2)">問題2</a></li>
+									<li><a href="#3" onclick="selectLevel(3)">問題3</a></li>
+									<li><a href="#4" onclick="selectLevel(4)">問題4</a></li>
+									<li><a href="#5" onclick="selectLevel(5)">問題5</a></li>
+									<li><a href="#99" onclick="selectLevel(99)">おまけ</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<div class="container">
+			<div class="page-header" id="banner">
+				<div class="row">
+					<div class="col-lg-12 col-md-7 col-sm-6">
+						<h2 id="level-title">問題1</h2>
+						<p class="lead">XSSでアラートを発生させてください。</p>
+						<hr>
+
+						<div id="game-frame-container">
+							<div id="topbar"></div>
+							<div class="example-controls">
+								<span class="url">URL</span>
+								<input id="input1" class="urlbar" type="text" value="">
+								<input class="urlbutton" type="Submit" value="Go" onclick="updateFrame(1); return false;">
+							</div>
+							<iframe class="game-frame" src="" name="ifm" onload="setFrameUrl(ifm.location.href)"></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
