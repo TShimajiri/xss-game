@@ -30,8 +30,7 @@ function h($target) {
 <?php
 if (isset($_GET['color'])) {
 ?>
-	<body style="background-color:<?php echo ($_GET['color']); ?>">
-<input style="-moz-binding: url(../xbl.xml#xss)">
+	<body style="background-color:<?php echo h($_GET['color']); ?>">
 <?php
 } else {
 ?>
